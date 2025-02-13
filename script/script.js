@@ -1,7 +1,9 @@
 const wordDisplay = document.querySelector(".word-display");
+const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
 
-let currentWord;
+let currentWord, wrongGuessCount = 0;
+const maxGuesses = 6;
 
 const getRandomWord = () => {
     // Memilih kata dan petunjuk secara acak dari wordList
@@ -23,10 +25,11 @@ const initGame = (button, clickedLetter) => {
             }
         })
     } else {
-        console.log(clickedLetter, " is not exist on the word");
+        wrongGuessCount++;
     }
     
 }
+guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
 
 // Membuat tombol keyboard
 for (let i = 97; i <= 122; i++) {
