@@ -19,7 +19,7 @@ const initGame = (button, clickedLetter) => {
         [...currentWord].forEach((letter, index) => {
             if(letter === clickedLetter) {
                 wordDisplay.querySelectorAll("li")[index].innerText = letter;
-                wordDisplay.querySelectorAll("li")[index].classList.add(guessed);
+                wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
             }
         })
     } else {
