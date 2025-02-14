@@ -1,3 +1,4 @@
+const hangmanImage = document.querySelector(".hangman-box img");
 const wordDisplay = document.querySelector(".word-display");
 const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
@@ -26,7 +27,7 @@ const initGame = (button, clickedLetter) => {
         wordDisplay.querySelectorAll("li")[index].innerText = letter;
         wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
       }
-    });
+    })
   } else {
     wrongGuessCount++;
     hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
