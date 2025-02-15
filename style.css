@@ -99,10 +99,13 @@ body {
     width: calc(100% / 9 - 5px);
 }
 
-.keyboard button:hover {
-    background: #8286c9;
+.keyboard button[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
 }
-
+:where(.game-modal, .keyboard) button:hover {
+    background: #8286C9;
+}
 .game-modal {
     position: fixed;
     left: 0;

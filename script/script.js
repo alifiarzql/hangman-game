@@ -3,7 +3,8 @@ const wordDisplay = document.querySelector(".word-display");
 const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
 
-let currentWord, wrongGuessCount = 0;
+let currentWord,
+  wrongGuessCount = 0;
 const maxGuesses = 6;
 
 const getRandomWord = () => {
@@ -27,13 +28,15 @@ const initGame = (button, clickedLetter) => {
         wordDisplay.querySelectorAll("li")[index].innerText = letter;
         wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
       }
-    })
+    });
   } else {
+    //if clicked letter doesent exist then update the wrongGuessCount and hangman image
     wrongGuessCount++;
     hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
   }
-}
-guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
+  button.disabled = true;
+  guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
+};
 
 // Membuat tombol keyboard
 for (let i = 97; i <= 122; i++) {
