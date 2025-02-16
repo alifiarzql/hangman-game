@@ -3,7 +3,7 @@ const wordDisplay = document.querySelector(".word-display");
 const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
 
-let currentWord,
+let currentWord, correctLetters
   wrongGuessCount = 0;
 const maxGuesses = 6;
 
@@ -25,6 +25,7 @@ const initGame = (button, clickedLetter) => {
     //showing all correct
     [...currentWord].forEach((letter, index) => {
       if (letter === clickedLetter) {
+        correctLetters.push(letter);
         wordDisplay.querySelectorAll("li")[index].innerText = letter;
         wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
       }
@@ -36,6 +37,9 @@ const initGame = (button, clickedLetter) => {
   }
   button.disabled = true;
   guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
+
+  if(wrongGuessCount === maxGuesses) return gameOver(false);
+  if(correctLetters.length === maxGuesses) return gameOver(false);
 };
 
 // Membuat tombol keyboard
