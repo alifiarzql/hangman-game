@@ -2,6 +2,7 @@ const hangmanImage = document.querySelector(".hangman-box img");
 const wordDisplay = document.querySelector(".word-display");
 const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
+const gameModal = document.querySelector(".game-modal");
 
 let currentWord, correctLetters
   wrongGuessCount = 0;
@@ -18,7 +19,11 @@ const getRandomWord = () => {
     .map(() => `<li class="letter"></li>`)
     .join("");
 };
-
+const gameOver = (isVictory) => {
+  setTimeout(() => {
+    gameModal.classList.add("show");
+  }, 300);
+}
 const initGame = (button, clickedLetter) => {
   //checking if clickedLetter is exist on the currentWord
   if (currentWord.includes(clickedLetter)) {
@@ -37,9 +42,9 @@ const initGame = (button, clickedLetter) => {
   }
   button.disabled = true;
   guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
-
+  //calling game over
   if(wrongGuessCount === maxGuesses) return gameOver(false);
-  if(correctLetters.length === maxGuesses) return gameOver(false);
+  if(correctLetters.length === currentWord.length) return gameOver(true);
 };
 
 // Membuat tombol keyboard
