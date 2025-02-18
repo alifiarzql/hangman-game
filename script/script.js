@@ -16,11 +16,15 @@ const getRandomWord = () => {
   document.querySelector(".hint-text b").innerText = hint;
   wordDisplay.innerHTML = word
     .split("")
-    .map(() => `<li class="letter"></li>`)
+    .map(() => `<li clas s="letter"></li>`)
     .join("");
 };
 const gameOver = (isVictory) => {
   setTimeout(() => {
+    const modalText = isVictory ? `You found the word: ` : `The correct word was: `;
+    gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gift`;
+    gameModal.querySelector("h4").src = `${isVictory ? 'Congrats!' : 'Game Over!'}.gift`;
+    gameModal.querySelector("img").src = `images/${isVictory ? 'victory' : 'lost'}.gift`;
     gameModal.classList.add("show");
   }, 300);
 }
